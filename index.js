@@ -3,14 +3,13 @@ const app = express();
 const port = process.env.PORT || 8080; // El puerto en el que se ejecutará tu servidor
 require('dotenv').config();
 const mongoose = require('mongoose');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const cors = require('cors');
 
-app.use('/api', createProxyMiddleware({
-  target: 'https://cinereactapp-back.vercel.app',
-  changeOrigin: true, // Cambiar el encabezado de origen a la URL de destino
-  pathRewrite: {
-    '^/api': '', // Elimina '/api' de la URL antes de redirigir
-  },
+app.use(cors());
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
 }));
 
 mongoose.connect(process.env.MONGODB_URI, {
