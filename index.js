@@ -27,7 +27,7 @@ app.use(express.json());
 
 // Rutas de ejemplo
 app.get('/', (req, res) => {
-  res.send('¡Hola, mundo!');
+  res.send('¡Hola, mundo! corriendo en el puerto'+ port);
 });
 
 const creacionUsuario = require('./crearUsuario');
