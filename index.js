@@ -8,6 +8,9 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 app.use('/api', createProxyMiddleware({
   target: 'https://cinereactapp-back.vercel.app',
   changeOrigin: true, // Cambiar el encabezado de origen a la URL de destino
+  pathRewrite: {
+    '^/api': '', // Elimina '/api' de la URL antes de redirigir
+  },
 }));
 
 mongoose.connect(process.env.MONGODB_URI, {
