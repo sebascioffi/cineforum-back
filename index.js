@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 8080; // El puerto en el que se ejecutará tu servidor
+const port = process.env.PORT ; // El puerto en el que se ejecutará tu servidor
 require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
