@@ -8,7 +8,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://cineforum.onrender.com/',
   credentials: true,
 }));
 
@@ -47,6 +47,6 @@ app.use('/api', eliminacionFavorita);
 
 // Iniciar el servidor
 app.listen(port, () => {
-  console.log(`El servidor está corriendo en http://localhost:${port}`);
+  console.log(`El servidor está corriendo :${port}`);
 });
 
