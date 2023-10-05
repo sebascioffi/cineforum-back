@@ -5,12 +5,12 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://cineforum.onrender.com',
+  optionsSuccessStatus: 200, // Opcional, define el código de estado de respuesta para las solicitudes pre-vuelo (preflight)
+};
 
-app.use(cors({
-  origin: 'https://cineforum.onrender.com/',
-  credentials: true,
-}));
+app.use(cors(corsOptions));
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
