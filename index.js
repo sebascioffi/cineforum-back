@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const corsOptions = {
-  origin: 'https://localhost3000',
+  origin: 'https://localhost:3000',
   optionsSuccessStatus: 200, // Opcional, define el código de estado de respuesta para las solicitudes pre-vuelo (preflight)
 };
 
