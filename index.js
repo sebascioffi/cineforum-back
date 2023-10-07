@@ -12,6 +12,12 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// Middleware para mantener la conexión activa
+app.use((req, res, next) => {
+  res.header('Connection', 'keep-alive');
+  next();
+});
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
