@@ -12,12 +12,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Middleware para mantener la conexión activa
-app.use((req, res, next) => {
-  res.header('Connection', 'keep-alive');
-  next();
-});
-
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -35,6 +29,11 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('¡Hola, mundo!');
 });
+
+// Configura un temporizador para imprimir un mensaje cada 5 minutos
+setInterval(() => {
+  console.log('El servidor sigue activo.');
+}, 5 * 60 * 1000); // 5 minutos en milisegundos
 
 const creacionUsuario = require('./crearUsuario');
 app.use('/api', creacionUsuario);
