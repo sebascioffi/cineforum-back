@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
   res.send('Servidor Backend funcionando');
 });
 
+app.get('/ping', (req, res) => {
+  res.status(200).send('Servidor en funcionamiento'); // Responder con un estado 200 OK
+});
+
 const creacionUsuario = require('./crearUsuario');
 app.use('/api', creacionUsuario);
 
