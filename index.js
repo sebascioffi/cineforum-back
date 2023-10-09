@@ -27,11 +27,6 @@ app.use(express.json());
 
 // Rutas de ejemplo
 app.get('/ping', (req, res) => {
-  console.log('Se recibió una solicitud de ping');
-  res.status(200).send('Servidor en funcionamiento');
-});
-
-app.get('/ping', (req, res) => {
   res.status(200).send('Servidor en funcionamiento'); // Responder con un estado 200 OK
 });
 
