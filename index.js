@@ -25,6 +25,10 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Backend funcionando');
+});
+
 // Rutas de ejemplo
 app.get('/ping', (req, res) => {
   res.status(200).send('Servidor en funcionamiento'); // Responder con un estado 200 OK
