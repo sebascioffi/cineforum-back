@@ -30,11 +30,6 @@ app.get('/', (req, res) => {
   res.send('¡Hola, mundo!');
 });
 
-// Configura un temporizador para imprimir un mensaje cada 5 minutos
-setInterval(() => {
-  console.log('El servidor sigue activo.');
-}, 5 * 60 * 1000); // 5 minutos en milisegundos
-
 const creacionUsuario = require('./crearUsuario');
 app.use('/api', creacionUsuario);
 
