@@ -26,8 +26,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use(express.json());
 
 // Rutas de ejemplo
-app.get('/', (req, res) => {
-  res.send('Servidor Backend funcionando');
+app.get('/ping', (req, res) => {
+  console.log('Se recibió una solicitud de ping');
+  res.status(200).send('Servidor en funcionamiento');
 });
 
 app.get('/ping', (req, res) => {
