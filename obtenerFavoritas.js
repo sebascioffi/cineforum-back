@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
-const mongoURL = process.env.MONGODB_URI;
+const mongoURL = process.env.URI;
 
 router.get('/obtenerFavoritas', async (req, res) => {
   const { userEmail } = req.query; // Cambia req.body a req.query para obtener el email como parámetro de consulta

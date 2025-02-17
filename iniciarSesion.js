@@ -3,7 +3,7 @@ const router = express.Router();
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
-const mongoURL = process.env.MONGODB_URI;
+const mongoURL = process.env.URI;
 
 router.post('/iniciarSesion', async (req, res) => {
   const { email, password } = req.body;

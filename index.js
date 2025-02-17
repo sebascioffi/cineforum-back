@@ -2,26 +2,41 @@ const express = require('express');
 const app = express();
 const port = 8080; // El puerto en el que se ejecutará tu servidor
 require('dotenv').config();
-const mongoose = require('mongoose');
 const cors = require('cors');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.URI
 
 const corsOptions = {
-  origin: 'https://cineforum.vercel.app',
-  optionsSuccessStatus: 200, // Opcional, define el código de estado de respuesta para las solicitudes pre-vuelo (preflight)
+  origin: 'https://cineforum.vercel.app', // Acepta ambos orígenes
+  optionsSuccessStatus: 200, // Opcional, define el código de estado para las solicitudes pre-vuelo
 };
 
 app.use(cors(corsOptions));
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => {
-    console.log('Conexión exitosa a la base de datos!');
-  })
-  .catch((error) => {
-    console.error('Error al conectar a la basee de datos:', error);
-  });
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
 
 app.use(express.json());
 
