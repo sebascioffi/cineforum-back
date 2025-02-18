@@ -6,8 +6,6 @@ dotenv.config();
 const bcrypt = require('bcrypt');
 
 const uri = process.env.URI
-console.log(uri);
-
 
 // Manejar la creación de usuario
 router.post('/crearUsuario', async (req, res) => {
