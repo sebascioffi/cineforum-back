@@ -11,6 +11,8 @@ const uri = process.env.URI
 router.post('/crearUsuario', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   const client = new MongoClient(uri);
+  console.log(uri);
+
   try {
     await client.connect();
     const dbName = 'cineforumdb';
