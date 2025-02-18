@@ -7,11 +7,12 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.URI
 
 const corsOptions = {
-  origin: 'https://cineforum.vercel.app', // Acepta ambos orígenes
+  origin: "*", // Permite todas las solicitudes desde cualquier origen
   optionsSuccessStatus: 200, // Opcional, define el código de estado para las solicitudes pre-vuelo
 };
 
 app.use(cors(corsOptions));
+
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
